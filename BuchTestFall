@@ -1,0 +1,38 @@
+namespace BuchTest
+{
+    [TestClass]
+    public class UnitTest1
+    {
+
+        [TestMethod]
+        [DataRow("")]
+        [DataRow("#")]
+        [DataRow(";")]
+        [DataRow("§")]
+        [DataRow("%")]
+        [ExpectedException(typeof(ArgumentException))]
+
+        public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
+
+        {
+
+            //Act
+
+            Buch b = new Buch(unerlaubtesZeichen, "titel");
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Autor_KannNichtNullSein(string unerlaubtesZeichen)
+
+        {
+
+            //Act
+
+            Buch b = new Buch(null, "titel");
+
+        }
+
+    }
+}
